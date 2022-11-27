@@ -16,4 +16,14 @@ class Animal {
     getAnimalName(){
         return this.animalName
     }
+    static getAnimalByRelativeName(animal,name){
+        console.log("test");
+        animal.forEach(element => {
+            console.log(element.getRelativeName());
+            if(element.getRelativeName() === name){
+                return element;
+            }
+        });
+        return null;
+    }
 }
