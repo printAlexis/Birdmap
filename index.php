@@ -40,7 +40,7 @@ include 'db/animalDB.php'
                 ?>
             </div>
         </div>
-        
+        <p>dazdzzdas</p>
     </body>
     <script src="js/map.js"></script>
     
