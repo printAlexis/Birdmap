@@ -10,20 +10,22 @@ class Animal {
     getLocation(i){
         return this.locations[i];
     }
+    getLocationLength(){
+        return this.locations.length;
+    }
     getRelativeName(){
         return this.relativeName;
     }
     getAnimalName(){
         return this.animalName
     }
-    static getAnimalByRelativeName(animal,name){
-        console.log("test");
-        animal.forEach(element => {
-            console.log(element.getRelativeName());
-            if(element.getRelativeName() === name){
-                return element;
+    static getAnimalByRelativeName(animals,name){
+        for(i = 0; i< animals.length; ++i){
+            if(animals[i].getRelativeName() === name){
+                console.log("wesg")
+                return animals[i];
             }
-        });
+        }
         return null;
     }
 }
