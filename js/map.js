@@ -1,6 +1,7 @@
 let studiesElements; 
 let studieAnimals = []
 $(document).ready(() =>{
+    console.log("test1");
     studiesElements = $(".study");
     studiesElements.click( function () {
         console.log($( this ).attr('value'));
