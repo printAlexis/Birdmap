@@ -1,5 +1,5 @@
 let studiesElements; 
-let studieAnimals = []
+let studieAnimals = [];
 let studieButtons = [];
 $(document).ready(() =>{
     studiesElements = $(".study");
@@ -33,12 +33,28 @@ function setUpMarker(marker,studie){
     marker.bindPopup('<p>Nom : '+studie.getRelativeName()+
     '</p><p>Espece : '+studie.getAnimalName()+
     '</p><p>Date : ' + studie.getLocation(0).timesampToString()+"</p>"+
-    '<button value='+studie.getRelativeName()+' onclick="test()">afficher sa route</button>')
+    '<button state="0" class="popup" value='+studie.getRelativeName()+' onclick="route()">afficher/masquer sa route</button>')
     .openPopup();
 
 }
-function test(){
-    console.log("fdp");
+function route(){
+    let btn = $('.popup')
+    if(studieAnimals,btn.attr('state') == 0){
+        showRoute(Animal.getAnimalByRelativeName(studieAnimals,btn.attr('value')))
+        btn.attr('state','1');
+    }
+      
+}
+function showRoute(animal){
+    let latlngs = []
+    let location;
+    for(i = 0; i<animal.getLocationLength();++i){
+        location = animal.getLocation(i);
+        latlngs.push([animal.getLocation(i).getLat(),animal.getLocation(i).getLong()]);
+    }
+    console.log(latlngs)
+    var polyline = L.polyline(latlngs, {color: 'red'}).addTo(map);
+    map.fitBounds(polyline.getBounds());
 }
         const map = L.map('map').setView([48.84169080236788, 2.2686434551720724], 17);
     
