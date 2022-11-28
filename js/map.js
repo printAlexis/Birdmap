@@ -1,33 +1,33 @@
 let studiesElements; 
 let studieAnimals = [];
-let MapControler;
+let mapControler;
 $(document).ready(() =>{
     let studiesElements = $(".study");
     studiesElements.click( function () {
         // studieAnimals = initialize($( this ).attr('value'));
         // displayStudies(studieAnimals);
-        MapControler = new MapControler(initialize($( this ).attr('value')));
+        mapControler = new MapControler(initialize($( this ).attr('value')),"fdzadzaazd");
     });
     
 })
 
-function displayStudies(studieAnimals){
-    let markers = []
-    let marker;
-    studieAnimals.forEach(element => {
-        marker = L.marker([element.getLocation(i).getLat(), element.getLocation(i).getLong()]);
-        setUpMarker(marker,element);
-        markers.push(marker.addTo(map))
-    });
-}        
-function setUpMarker(marker,studie){
-    marker.bindPopup('<p>Nom : '+studie.getRelativeName()+
-    '</p><p>Espece : '+studie.getAnimalName()+
-    '</p><p>Date : ' + studie.getLocation(0).timesampToString()+"</p>"+
-    '<button state="0" class="popup" value='+studie.getRelativeName()+' onclick="route()">afficher/masquer sa route</button>')
-    .openPopup();
+// function displayStudies(studieAnimals){
+//     let markers = []
+//     let marker;
+//     studieAnimals.forEach(element => {
+//         marker = L.marker([element.getLocation(i).getLat(), element.getLocation(i).getLong()]);
+//         setUpMarker(marker,element);
+//         markers.push(marker.addTo(map))
+//     });
+// }        
+// function setUpMarker(marker,studie){
+//     marker.bindPopup('<p>Nom : '+studie.getRelativeName()+
+//     '</p><p>Espece : '+studie.getAnimalName()+
+//     '</p><p>Date : ' + studie.getLocation(0).timesampToString()+"</p>"+
+//     '<button state="0" class="popup" value='+studie.getRelativeName()+' onclick="route()">afficher/masquer sa route</button>')
+//     .openPopup();
 
-}
+// }
 function route(){
     let btn = $('.popup')
     if(studieAnimals,btn.attr('state') == 0){

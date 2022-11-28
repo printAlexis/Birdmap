@@ -6,9 +6,9 @@ class MapControler{
         });
         this.displayAnimals();
     }
-    
+    //TODO DESTRUCTOR
     displayAnimals(){
-        animalControler.forEach(element => {
+        this.animalControler.forEach(element => {
             element.addToMap();
         });
     }
