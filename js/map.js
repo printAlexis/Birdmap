@@ -1,6 +1,6 @@
 let studiesElements; 
 let studieAnimals = [];
-let studieButtons = [];
+
 $(document).ready(() =>{
     studiesElements = $(".study");
     studiesElements.click( function () {
@@ -12,14 +12,6 @@ $(document).ready(() =>{
     
 })
 
-function registerButtons(){
-    studieButtons = $(".boutonAnimal");
-    console.log(studieButtons.length)
-    studieButtons.click( function () {
-        console.log("test");
-
-    });
-}
 function displayStudies(studieAnimals){
     let markers = []
     let marker;

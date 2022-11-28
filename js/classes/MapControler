@@ -1,0 +1,9 @@
+class MapControler{
+    animalControler
+
+    constructor(studiesAnimals){
+        studieAnimals.forEach(element => {
+            this.animalControler = new AnimalControler()
+        });
+    }
+}
