@@ -1,8 +1,8 @@
 class MapControler{
-    constructor(studieAnimals){
+    constructor(studieAnimals,callback){
         this.animalControler = [];
         studieAnimals.forEach(element => {
-            this.animalControler.push(new AnimalControler(element))
+            this.animalControler.push(new AnimalControler(element,callback))
         });
         this.displayAnimals();
     }
@@ -11,5 +11,9 @@ class MapControler{
         this.animalControler.forEach(element => {
             element.addToMap();
         });
+    }
+    route(name){
+        AnimalControler.getAnimalControlerByRelativeName(this.animalControler,name)
+        .showRoute();
     }
 }
