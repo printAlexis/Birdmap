@@ -14,6 +14,8 @@ include 'db/animalDB.php'
     <link rel="stylesheet" href="style/map.css">
     <script src="js/classes/location.js"></script>
     <script src="js/classes/animal.js"></script>
+    <script src="js/classes/AnimalControler.js"></script>
+    <script src="js/classes/MapControler.js"></script>
     <script src="js/importStudie.js"></script>
 	<style>
 

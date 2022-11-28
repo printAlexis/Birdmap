@@ -1,13 +1,12 @@
 let studiesElements; 
 let studieAnimals = [];
-
+let MapControler;
 $(document).ready(() =>{
-    studiesElements = $(".study");
+    let studiesElements = $(".study");
     studiesElements.click( function () {
-        studieAnimals = initialize($( this ).attr('value'));
-        displayStudies(studieAnimals);
-        registerButtons();
-
+        // studieAnimals = initialize($( this ).attr('value'));
+        // displayStudies(studieAnimals);
+        MapControler = new MapControler(initialize($( this ).attr('value')));
     });
     
 })

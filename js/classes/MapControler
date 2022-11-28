@@ -1,9 +1,15 @@
 class MapControler{
-    animalControler
-
-    constructor(studiesAnimals){
+    constructor(studieAnimals){
+        this.animalControler = [];
         studieAnimals.forEach(element => {
-            this.animalControler = new AnimalControler()
+            this.animalControler.push(new AnimalControler(element))
+        });
+        this.displayAnimals();
+    }
+    
+    displayAnimals(){
+        animalControler.forEach(element => {
+            element.addToMap();
         });
     }
 }
