@@ -2,17 +2,22 @@ let studiesElements;
 let studieAnimals = [];
 let mapControler;
 $(document).ready(() =>{
-    let studiesElements = $(".study");
-    studiesElements.click( function () {
-        mapControler = new MapControler(initialize($( this ).attr('value')),'route()');
-    });
-    
+    reloadStudies();
 })
+function reloadStudies(){
+    studiesElements = $(".study");
+    studiesElements.click( function () {
+        console.log("test");
+        initialize($( this ).attr('value'),'route()');
+    });
+}
+function initMapControler(controler){
+    mapControler = controler
+}
 function route(){
     let btn = $('.popup');
     if(studieAnimals,btn.attr('state') == 0){
         mapControler.route(btn.attr('value'));
-        btn.attr('state','1');
     }
       
 }

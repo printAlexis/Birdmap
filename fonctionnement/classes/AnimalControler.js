@@ -4,6 +4,7 @@ class AnimalControler{
         this.animal = animal;
         this.marker = L.marker([animal.getLocation(i).getLat(), animal.getLocation(i).getLong()]);
         this.popup = this.#setupPopup(callback);
+        this.routeDisplayed = false;
     }
     addToMap(){
         this.marker.addTo(map);
@@ -20,6 +21,7 @@ class AnimalControler{
         return this.animal;
     }
     showRoute(){
+        this.routeDisplayed = true;
         let latlngs = []
         let location;
         for(i = 0; i<this.animal.getLocationLength();++i){
@@ -29,6 +31,9 @@ class AnimalControler{
         console.log(latlngs)
         var polyline = L.polyline(latlngs, {color: 'red'}).addTo(map);
         map.fitBounds(polyline.getBounds());
+        polyline.setMap(null);
+        polyline.remove();
+        polyline = null;
     }
     static getAnimalControlerByRelativeName(animalControlers,name){
         for(i = 0; i< animalControlers.length; ++i){

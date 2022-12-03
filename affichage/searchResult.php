@@ -1,18 +1,17 @@
 <?php
 include '../db/animalDB.php';
-$etudes;
-echo("<script>console.log('tedzadzast')</script>");
 
-echo($_GET['text']);
+
+
 if(isset($_GET['text'])){
     $text = (String) trim($_GET['text']);
 
-    $etudes = animalDB::getStudieByText('movements',30);
+    $etudes = animalDB::getStudieByText($text,30);
 
 }
 
 else{
-    $etudes = animalDB::getStudies(30);
+    $etudes = animalDB::getStudies(" ");
 }
 
 foreach ($etudes as $studie) {

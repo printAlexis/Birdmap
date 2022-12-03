@@ -25,14 +25,17 @@ html, body {
 }
 
 .scroll-menu {
-  width: 35%;
-  height: 30vw;
+  width: 100%;
+  height: 90%;
 
   overflow-y:scroll; 
   position:relative;
 }
 
-
+.searchbar{
+  height: 10%;
+  width: 100%;
+}
 .scroll-menu a {
 
   background-color: #eee;
@@ -49,4 +52,9 @@ html, body {
 .scroll-menu a.active {
   background-color: #04AA6D;
   color: white;
+}
+
+.search-menu{
+  width: 35%;
+  height: 30vw;
 }

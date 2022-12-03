@@ -3,15 +3,14 @@ let max_events_per_individual = 100; // !! change as you like to show more/fewer
 let data;
 
 
-function initialize(study_id) {
+function initialize(study_id,callback) {
     let animals = [];
     console.log(`${jsonUrl}?&study_id=${study_id}&max_events_per_individual=${max_events_per_individual}&sensor_type=gps`)
     $.ajax({
         url: `${jsonUrl}?&study_id=${study_id}&max_events_per_individual=${max_events_per_individual}&sensor_type=gps`,
-        async: false,
+        async: true,
         dataType: 'json',
         success: function (data0) {
-     
             let animal 
             let locat;
             for(i = 0 ; i<data0.individuals.length ; ++i){
@@ -25,14 +24,15 @@ function initialize(study_id) {
                                             locat.timestamp)
                 }
             }
-    
-  
+
+            initMapControler(new MapControler(animals,callback));
+            
         },
         error: (e) => {
             alert(e)
         }
         
     });
-    return animals
+    return null
 }
 

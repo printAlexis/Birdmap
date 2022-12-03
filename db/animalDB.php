@@ -2,7 +2,7 @@
 class AnimalDB {
   // Properties
   private static $connexion;
-
+  private static $loaded;
 
 
   
@@ -14,27 +14,18 @@ class AnimalDB {
         $login,
         $password
       );
-      echo("<script>console.log('base de données chargée avec success')</script>");
-
     }
     catch (Exception $e){
         echo("<script>console.log('erreur de connection a la base de donnée')</script>");
     }
 
   }
-  static function test($host){
-    echo($host);
-  }
-  static function getStudies($max){
 
-    $sql = 'SELECT * FROM etude LIMIT ?';
-    
-    $requete = self::$connexion->prepare($sql);
-    $requete->bindValue(1, $max,PDO::PARAM_INT);
-    $requete->execute();
-    return $requete->fetchAll();
-  }
+
   static function getStudieByText($text,$max){
+    if(self::$connexion == null){
+      self::loadDB('localhost','animalmap','utf8','root','root');
+    }
     $sql = "SELECT * FROM etude WHERE Id_Etude LIKE '%".$text."%' OR NomEtude LIKE '%".$text."%' OR DescriptionEtude LIKE '%".$text."%' LIMIT ?";
 
     $requete = self::$connexion->prepare($sql);
@@ -46,6 +37,5 @@ class AnimalDB {
   
 }
 
-AnimalDB::loadDB('localhost','animalmap','utf8','root','root');
 
 ?>

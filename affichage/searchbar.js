@@ -1,19 +1,27 @@
-let scrollmenu = $(".scroll-menu")
+let scrollmenu = $(".scroll-menu");
+let searchbar = $(".searchbar");
+getSearchResult(" ")
+searchbar.keyup(function (){
+    getSearchResult($(this).val());
 
+});
 
-$.ajax({
-    type: 'GET',
-    url: 'affichage/searchResult.php',
-
-    data: {
-        text: "e"
-    },
-    success: function(data){
-        if(data != ""){
-            scrollmenu.html(data);
+function getSearchResult(word){
+    $.ajax({
+        type: 'GET',
+        url: 'affichage/searchResult.php',
+        
+        data: {
+            text: word
+        },
+        success: function(data){
+            if(data != ""){
+                scrollmenu.html(data);
+            }
+            else{
+                scrollmenu.html("<div>Pas de recherche disponible</div>")
+            }
+            reloadStudies();
         }
-        else{
-            scrollmenu.html("<div>Pas de recherche disponible</div>")
-        }
-    }
-})
+    })
+}
