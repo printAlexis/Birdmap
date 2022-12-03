@@ -7,6 +7,7 @@ class AnimalDB {
 
   
   static function loadDB($host,$dbname,$charset,$login,$password){
+
     try{
         self::$connexion = new PDO(
         'mysql:host='.$host.';dbname='.$dbname.';charset='.$charset,
@@ -21,6 +22,9 @@ class AnimalDB {
     }
 
   }
+  static function test($host){
+    echo($host);
+  }
   static function getStudies($max){
 
     $sql = 'SELECT * FROM etude LIMIT ?';
@@ -30,6 +34,16 @@ class AnimalDB {
     $requete->execute();
     return $requete->fetchAll();
   }
+  static function getStudieByText($text,$max){
+    $sql = "SELECT * FROM etude WHERE Id_Etude LIKE '%".$text."%' OR NomEtude LIKE '%".$text."%' OR DescriptionEtude LIKE '%".$text."%' LIMIT ?";
+
+    $requete = self::$connexion->prepare($sql);
+    $requete->bindValue(1, $max,PDO::PARAM_INT);
+    $requete->execute();
+    return $requete->fetchAll();
+  }
+
+  
 }
 
 AnimalDB::loadDB('localhost','animalmap','utf8','root','root');
