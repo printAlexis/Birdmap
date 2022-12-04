@@ -24,8 +24,8 @@ function initialize(study_id,callback) {
                                             locat.timestamp)
                 }
             }
-
-            addStudyControler(new StudyControler(animals,callback,animal.name));
+            console.log(animal.study_id);
+            addStudiesControler(new StudyControler(animals,callback,animal.study_id));
             
         },
         error: (e) => {

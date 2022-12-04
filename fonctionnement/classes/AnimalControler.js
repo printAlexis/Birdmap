@@ -1,6 +1,7 @@
 class AnimalControler{
 
-    constructor(animal,callback){
+    constructor(animal,callback,id){
+        this.studyId = id;
         this.animal = animal;
         this.marker = L.marker([animal.getLocation(i).getLat(), animal.getLocation(i).getLong()]);
         this.popup = this.#setupPopup(callback);
@@ -15,7 +16,7 @@ class AnimalControler{
         return this.marker.bindPopup('<p>Nom : '+this.animal.getRelativeName()+
         '</p><p>Espece : '+this.animal.getAnimalName()+
         '</p><p>Date : ' + this.animal.getLocation(0).timesampToString()+"</p>"+
-        '<button state="0" class="popup" value="'+this.animal.getRelativeName()+'"onclick='+callback+'>afficher/masquer sa route</button>')
+        '<button studyName="'+this.studyId+'" class="popup" value="'+this.animal.getRelativeName()+'"onclick='+callback+'>afficher/masquer sa route</button>')
         .openPopup();
     }
     getAnimal(){

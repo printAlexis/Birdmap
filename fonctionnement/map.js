@@ -22,9 +22,7 @@ function addStudiesControler(controler){
 }
 function route(){
     let btn = $('.popup');
-    StudiesControler.route(btn.attr('value'));
-
-      
+    StudyControler.getStudyFromId(StudiesControler,btn.attr('studyName')).route(btn.attr('value'));
 }
 
     const map = L.map('map').setView([48.84169080236788, 2.2686434551720724], 17);

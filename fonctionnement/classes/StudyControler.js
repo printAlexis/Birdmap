@@ -1,23 +1,24 @@
 class StudyControler{
-    constructor(studieAnimals,callback,name){
+    constructor(studieAnimals,callback,id){
+
         this.animalControler = [];
-        this.name = name
+        this.id = id
         studieAnimals.forEach(element => {
-            this.animalControler.push(new AnimalControler(element,callback))
+            this.animalControler.push(new AnimalControler(element,callback,this.id))
         });
         this.displayAnimals();
     }
-    getName(){
-        return this.name
+    getId(){
+        return this.id
     }
 
-    getStudyFromName(studies,name){
-        studies.forEach(element => {
-            if(element.getName() == name){
-                return element;
+    static getStudyFromId(studies,id){
+        for(i = 0 ; i<studies.length ; ++i){
+            if(studies[i].getId() ==id){
+                return studies[i];
             }
-        });
-        return null;
+        }
+        return null
     }
     //TODO DESTRUCTOR
     displayAnimals(){
