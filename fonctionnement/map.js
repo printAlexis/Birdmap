@@ -1,7 +1,6 @@
 let studiesElements; 
 let studieAnimals = [];
-let StudyControler = [];
-let test;
+let StudiesControler = [];
 $(document).ready(() =>{
     reloadStudies();
 })
@@ -10,7 +9,6 @@ function reloadStudies(){
     studiesElements.click( function () {
 
         if($(this).hasClass("selected")){
-            console.log("test");
             $(this).removeClass("selected");
         }
         else{
@@ -19,12 +17,12 @@ function reloadStudies(){
         initialize($( this ).attr('value'),'route()');
     });
 }
-function addStudyControler(controler){
-    StudyControler.push(controler);
+function addStudiesControler(controler){
+    StudiesControler.push(controler);
 }
 function route(){
     let btn = $('.popup');
-    StudyControler.route(btn.attr('value'));
+    StudiesControler.route(btn.attr('value'));
 
       
 }
