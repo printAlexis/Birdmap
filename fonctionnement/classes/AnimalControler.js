@@ -4,6 +4,7 @@ class AnimalControler{
         this.animal = animal;
         this.marker = L.marker([animal.getLocation(i).getLat(), animal.getLocation(i).getLong()]);
         this.popup = this.#setupPopup(callback);
+        this.polyline = null;
         this.routeDisplayed = false;
     }
     addToMap(){
@@ -20,20 +21,29 @@ class AnimalControler{
     getAnimal(){
         return this.animal;
     }
+    route(){
+        if(this.routeDisplayed){
+            this.deleteRoute();
+        }
+        else{
+            this.showRoute();
+        }
+    }
     showRoute(){
         this.routeDisplayed = true;
-        let latlngs = []
+        let latlngs = [];
         let location;
         for(i = 0; i<this.animal.getLocationLength();++i){
             location = this.animal.getLocation(i);
             latlngs.push([this.animal.getLocation(i).getLat(),this.animal.getLocation(i).getLong()]);
         }
-        console.log(latlngs)
-        var polyline = L.polyline(latlngs, {color: 'red'}).addTo(map);
-        map.fitBounds(polyline.getBounds());
-        polyline.setMap(null);
-        polyline.remove();
-        polyline = null;
+        this.polyline = L.polyline(latlngs, {color: 'red'}).addTo(map);
+        map.fitBounds(this.polyline.getBounds());
+
+    }
+    deleteRoute(){
+        map.removeLayer(this.polyline)
+        this.routeDisplayed = false;
     }
     static getAnimalControlerByRelativeName(animalControlers,name){
         for(i = 0; i< animalControlers.length; ++i){

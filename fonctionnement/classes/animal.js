@@ -22,7 +22,6 @@ class Animal {
     static getAnimalByRelativeName(animals,name){
         for(i = 0; i< animals.length; ++i){
             if(animals[i].getRelativeName() === name){
-                console.log("wesg")
                 return animals[i];
             }
         }

@@ -37,21 +37,16 @@ html, body {
   width: 100%;
 }
 .scroll-menu a {
-
-  background-color: #eee;
   color: black;
   display: block;
   padding: 12px;
   text-decoration: none;
 }
 
-.scroll-menu a:hover {
-  background-color: #ccc;
-}
 
-.scroll-menu a.active {
-  background-color: #04AA6D;
-  color: white;
+.selected{
+
+  background-color: rgb(209, 178, 121);
 }
 
 .search-menu{

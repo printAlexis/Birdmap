@@ -13,7 +13,7 @@
     <script src="fonctionnement/classes/location.js"></script>
     <script src="fonctionnement/classes/animal.js"></script>
     <script src="fonctionnement/classes/AnimalControler.js"></script>
-    <script src="fonctionnement/classes/MapControler.js"></script>
+    <script src="fonctionnement/classes/StudyControler.js"></script>
     <script src="fonctionnement/importStudie.js"></script>
 	<style>
 

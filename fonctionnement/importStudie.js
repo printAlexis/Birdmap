@@ -25,7 +25,7 @@ function initialize(study_id,callback) {
                 }
             }
 
-            initMapControler(new MapControler(animals,callback));
+            addStudyControler(new StudyControler(animals,callback,animal.name));
             
         },
         error: (e) => {

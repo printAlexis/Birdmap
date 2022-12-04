@@ -1,24 +1,31 @@
 let studiesElements; 
 let studieAnimals = [];
-let mapControler;
+let StudyControler = [];
+let test;
 $(document).ready(() =>{
     reloadStudies();
 })
 function reloadStudies(){
     studiesElements = $(".study");
     studiesElements.click( function () {
-        console.log("test");
+
+        if($(this).hasClass("selected")){
+            console.log("test");
+            $(this).removeClass("selected");
+        }
+        else{
+            $(this).addClass("selected");
+        }
         initialize($( this ).attr('value'),'route()');
     });
 }
-function initMapControler(controler){
-    mapControler = controler
+function addStudyControler(controler){
+    StudyControler.push(controler);
 }
 function route(){
     let btn = $('.popup');
-    if(studieAnimals,btn.attr('state') == 0){
-        mapControler.route(btn.attr('value'));
-    }
+    StudyControler.route(btn.attr('value'));
+
       
 }
 
