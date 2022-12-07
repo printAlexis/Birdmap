@@ -13,11 +13,24 @@ html, body {
   max-width: 100%;
   max-height: 100%;
 }
+
 .map{
-  width: 55%;
+  width: 100%;
   height: 100%;
 }
-
+.map--container{
+  width: 55%;
+  height: 100%;
+  position: relative;
+}
+.chargement{
+  position: absolute;
+  z-index: 10000;
+  top:50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: none;
+}
 
 .map-interface{
   display: flex;
@@ -50,6 +63,6 @@ html, body {
 }
 
 .search-menu{
-  width: 35%;
+  width: 45%;
   height: 30vw;
 }

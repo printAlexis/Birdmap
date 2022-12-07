@@ -28,15 +28,18 @@
 <!-- search the text for !! to find the lines that need to be modified to display your map. -->
     <body>
         <div class="map-interface">
-            <div id="map" ></div>
+            <div class="map--container">
+                <img src="img/chargement.gif" width="50px" height="50px" class="chargement" alt="loading"/>
+                <div id="map" ></div>
+            </div>
+        
             <div class="search-menu">
                 <input class="searchbar" type="text" placeholder="Search..">
                 <div class="scroll-menu">
                 </div>
             </div>
-
-        </div>
-
+        <div>
+        
     </body>
     <script src="fonctionnement/map.js"></script>
     <script src="affichage/searchbar.js"></script>
