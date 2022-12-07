@@ -9,7 +9,7 @@ searchbar.keyup(function (){
 function getSearchResult(word){
     $.ajax({
         type: 'GET',
-        url: 'affichage/searchResult.php',
+        url: 'affichage/searchbar/searchResult.php',
         
         data: {
             text: word

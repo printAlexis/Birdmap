@@ -42,5 +42,5 @@
         
     </body>
     <script src="fonctionnement/map.js"></script>
-    <script src="affichage/searchbar.js"></script>
+    <script src="affichage/searchbar/searchbar.js"></script>
 </html>
