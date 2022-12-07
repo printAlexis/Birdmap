@@ -1,8 +1,13 @@
-let studiesElements; 
 let studieAnimals = [];
 let StudiesControler = [];
 let loading = false;
+let mapMenu;
+
+
 $(document).ready(() =>{
+    mapMenu =  $(".search-menu");
+    SearchBar.loadSearchBar();
+    SearchBar.getSearchResult(" ");
     reloadStudies();
 })
 function reloadStudies(){
@@ -34,6 +39,7 @@ function route(){
     let btn = $('.popup');
     StudyControler.getStudyFromId(StudiesControler,btn.attr('studyName')).route(btn.attr('value'));
 }
+
 
     const map = L.map('map').setView([48.84169080236788, 2.2686434551720724], 17);
     
