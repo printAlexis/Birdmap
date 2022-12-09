@@ -26,7 +26,7 @@ class AnimalDB {
     if(self::$connexion == null){
       self::loadDB('localhost','animalmap','utf8','root','root');
     }
-    $sql = "SELECT * FROM etude WHERE Id_Etude LIKE '%".$text."%' OR NomEtude LIKE '%".$text."%' OR DescriptionEtude LIKE '%".$text."%' LIMIT ?";
+    $sql = "SELECT * FROM etude WHERE Id_Etude LIKE '%".$text."%' OR NomEtude LIKE '%".$text."%' OR DescriptionEtude LIKE '%".$text."%' ORDER BY NomEtude LIMIT ?";
 
     $requete = self::$connexion->prepare($sql);
     $requete->bindValue(1, $max,PDO::PARAM_INT);

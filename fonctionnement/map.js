@@ -18,11 +18,10 @@ function reloadStudies(){
         }
         
         if($(this).hasClass("selected")){
-            $(this).removeClass("selected");
+            SearchBar.removeStudy($(this));
         }
         else{
-            $(this).addClass("selected");
-            $('.chargement').show();
+            SearchBar.addStudy($(this));
             loading = true;
         }
 
