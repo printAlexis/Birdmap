@@ -42,6 +42,14 @@ class AnimalControler{
         map.fitBounds(this.polyline.getBounds());
 
     }
+    removeElement(){
+        map.removeLayer(this.marker);
+        this.marker = null;
+        if(this.routeDisplayed){
+            this.deleteRoute();
+        }
+
+    }
     deleteRoute(){
         map.removeLayer(this.polyline)
         this.routeDisplayed = false;

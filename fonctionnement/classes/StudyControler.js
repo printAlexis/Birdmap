@@ -20,12 +20,26 @@ class StudyControler{
         }
         return null
     }
-    //TODO DESTRUCTOR
+    static RemoveElementFromID(studies,id){
+        for(let i = 0 ; i<studies.length; ++i){
+            if(studies[i].getId() == id){
+                studies.splice(i,1);
+
+            }
+        }
+    }
+    removeElements(){
+        this.animalControler.forEach(element =>{
+            element.removeElement();
+        })
+        this.animalControler = null;
+    }
     displayAnimals(){
         this.animalControler.forEach(element => {
             element.addToMap();
         });
     }
+
     route(name){
         AnimalControler.getAnimalControlerByRelativeName(this.animalControler,name)
         .route();

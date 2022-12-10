@@ -33,6 +33,17 @@ class AnimalDB {
     $requete->execute();
     return $requete->fetchAll();
   }
+  static function getStudieByID($id){
+    if(self::$connexion == null){
+      self::loadDB('localhost','animalmap','utf8','root','root');
+    }
+    $sql = "SELECT * FROM etude WHERE Id_Etude =?";
+
+    $requete = self::$connexion->prepare($sql);
+    $requete->bindValue(1, $id,PDO::PARAM_INT);
+    $requete->execute();
+    return $requete->fetchAll();
+  }
 
   
 }

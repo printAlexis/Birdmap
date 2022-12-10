@@ -19,6 +19,10 @@ function reloadStudies(){
         
         if($(this).hasClass("selected")){
             SearchBar.removeStudy($(this));
+            let study = StudyControler.getStudyFromId(StudiesControler,$(this).attr('value'));
+            StudyControler.RemoveElementFromID(StudiesControler,$(this).attr('value'));
+            study.removeElements();
+            return;
         }
         else{
             SearchBar.addStudy($(this));

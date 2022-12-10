@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.2/dist/leaflet.css" integrity="sha256-sA+zWATbFveLLNqWO2gtiw3HL/lh1giY/Inf1BJ0z14=" crossorigin=""/>
     <script src="https://unpkg.com/leaflet@1.9.2/dist/leaflet.js" integrity="sha256-o9N1jGDZrf5tS+Ft4gbIK7mYMipq9lqpVJ91xHSyKhg=" crossorigin=""></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js" integrity="sha256-lSjKY0/srUM9BE3dPm+c4fBo1dky2v27Gdjm2uoZaL0=" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="style/map.css">
     <script src="fonctionnement/classes/location.js"></script>
     <script src="fonctionnement/classes/animal.js"></script>
@@ -38,9 +39,10 @@
                 <div class="scroll-menu">
                 </div>
             </div>
-        <div>
-        
+    </div>
+        <div class="merde">fdp</div>
     </body>
     <script src="fonctionnement/map.js"></script>
     <script src="affichage/searchbar/searchbar.js"></script>
+    <script src="affichage/modifMenu/ModifMenu.js"></script>
 </html>
