@@ -56,7 +56,10 @@ html, body {
   text-decoration: none;
 }
 
-
+.choix{
+  display: flex;
+  justify-content: space-around;
+}
 .selected{
 
   background-color: rgb(209, 178, 121);

@@ -16,3 +16,8 @@ if(isset($_GET['id'])){
     <h4>Description:</h4>
     <textarea name="textarea" id="textarea-a"><?php echo($desc);?></textarea>
 </div>
+
+<div class="choix">
+    <button class="valider">Valider</button>
+    <button class="annuler">Annuler</button>
+</div>

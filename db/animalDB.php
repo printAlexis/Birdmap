@@ -44,7 +44,17 @@ class AnimalDB {
     $requete->execute();
     return $requete->fetchAll();
   }
-
+  static function modifStudy($id,$titre,$desc){
+    if(self::$connexion == null){
+      self::loadDB('localhost','animalmap','utf8','root','root');
+    }
+    $sql = "update etude SET NomEtude =?,DescriptionEtude =? WHERE id_Etude =?";
+    $requete = self::$connexion->prepare($sql);
+    $requete->bindValue(1, $titre,PDO::PARAM_STR);
+    $requete->bindValue(2, $desc,PDO::PARAM_STR);
+    $requete->bindValue(3, $id,PDO::PARAM_INT);
+    $requete->execute();
+  }
   
 }
 

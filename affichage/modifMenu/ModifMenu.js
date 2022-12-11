@@ -2,6 +2,16 @@ class ModifMenu{
     constructor(StudyId){
         this.id = StudyId;
     }
+    static #addListener(){
+        console.log("testttrt");
+        $(".valider").click(function(){
+            console.log("salut mon pote")
+        })
+        $(".annuler").click(function(){
+            SearchBar.loadSearchBar()
+            SearchBar.getSearchResult("");
+        })
+    }
     LoadMenu(){
         $.ajax({
             type: 'GET',
@@ -11,6 +21,7 @@ class ModifMenu{
             },
             success: function(data){
                 $(".search-menu").html(data);
+                ModifMenu.#addListener();
             }
         })
     }
