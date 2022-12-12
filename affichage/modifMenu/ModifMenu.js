@@ -12,6 +12,19 @@ class ModifMenu{
             SearchBar.getSearchResult("");
         })
     }
+    ModifStudy(studyID,){
+        $.ajax({
+            type: 'POST',
+            url: 'db/AnimalBD.php',
+            data: {
+                id: "247850178"
+            },
+            success: function(data){
+                $(".search-menu").html(data);
+                ModifMenu.#addListener();
+            }
+        })
+    }
     LoadMenu(){
         $.ajax({
             type: 'GET',
