@@ -1,9 +1,18 @@
 class AnimalControler{
 
-    constructor(animal,callback,id){
+    constructor(animal,callback,id,img){
         this.studyId = id;
         this.animal = animal;
-        this.marker = L.marker([animal.getLocation(i).getLat(), animal.getLocation(i).getLong()]);
+        let ratio = img.width / img.height;
+        let width = 30;
+        let icon = L.icon({
+            iconUrl: img.path,
+            iconSize: [width*ratio, width],
+            iconAnchor:   [0, 0],
+            popupAnchor:  [width/2, -(width*ratio)/2]
+        })
+
+        this.marker = L.marker([animal.getLocation(-1).getLat(), animal.getLocation(-1).getLong()], {icon : icon});
         this.popup = this.#setupPopup(callback);
         this.polyline = null;
         this.routeDisplayed = false;
@@ -11,6 +20,8 @@ class AnimalControler{
     addToMap(){
         this.marker.addTo(map);
     } 
+
+
     #setupPopup(callback){
 
         return this.marker.bindPopup('<p>Nom : '+this.animal.getRelativeName()+

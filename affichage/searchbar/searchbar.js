@@ -12,7 +12,10 @@ class SearchBar{
         }
 
     }
-
+    static resetAll(){
+        this.studies = [];
+        this.getSearchResult("");
+    }
     static addStudy(study){
         study.addClass("selected");
         $('.chargement').show();
@@ -43,7 +46,7 @@ class SearchBar{
                     SearchBar.getSelected();
                 }
                 else{
-                    $(".scroll-menu").html("<div>Pas de recherche disponible</div>")
+                    $(".scroll-menu").html("<div class='indisponible'><h1>Pas de recherche disponible</h1></div>")
                 }
                 reloadStudies();
             }

@@ -1,5 +1,5 @@
 <?php
-include '../../db/animalDB.php';
+include_once '../../db/animalDB.php';
 
 
 
@@ -15,8 +15,11 @@ else{
 }
 
 foreach ($etudes as $studie) {
-    echo("<a class='study' value=".$studie['Id_Etude']." title='".$studie['DescriptionEtude']."'>
-        <p>".$studie['NomEtude']."</p>
-        </a>");
+    echo("<div class='study-container'><a class='study' value=".$studie['Id_Etude']." title='".$studie['DescriptionEtude']."'>
+            <p value=".$studie['Id_Etude'].">".$studie['NomEtude']."</p>
+            </a>
+            <button class='modif'  value=".$studie['Id_Etude']." type='button'>Proposer une modification</button>
+            <span></span>
+        </div>");
     }
 ?>

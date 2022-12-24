@@ -3,15 +3,40 @@ class StudyControler{
 
         this.animalControler = [];
         this.id = id
-        studieAnimals.forEach(element => {
-            this.animalControler.push(new AnimalControler(element,callback,this.id))
+        let path = "img/uploads/"+id+"/pointer.png";
+        resourceExists(path).then(exists => {
+        if (exists) {
+            console.log("La ressource existe");
+        } else {
+            console.log("La ressource n'existe pas");
+        }
         });
-        this.displayAnimals();
+        pathExists(path).then((exists) => {
+            let reelPath
+            if (!exists) {
+               reelPath = "img/uploads/default.png";
+            }
+            else{
+                reelPath = path
+            }    
+            getIMG(reelPath).then((img) => {
+                studieAnimals.forEach(element => {
+                    if(element.hasLocation()){
+
+                        this.animalControler.push(new AnimalControler(element,callback,this.id,img))
+                    }
+                });
+                this.displayAnimals();
+            });
+          });
     }
     getId(){
         return this.id
     }
-
+    getAnimalControler(i){
+        if(this.animalControler.length>0)
+            return this.animalControler[i];
+    }
     static getStudyFromId(studies,id){
         for(i = 0 ; i<studies.length ; ++i){
             if(studies[i].getId() ==id){
@@ -44,4 +69,35 @@ class StudyControler{
         AnimalControler.getAnimalControlerByRelativeName(this.animalControler,name)
         .route();
     }
+}
+
+function getIMG(path){
+    return new Promise( resolve =>{
+        const img =  new Image();
+        img.src = path
+        img.onload = function() {
+            let img = {
+               path:this.src,
+                width: this.width,
+                height:this.height
+            }
+            resolve(img);
+        }
+    })
+}
+function loadIMG(path){
+    $.ajax({
+        type: 'GET',
+        url: 'db/AjaxRequests/isPath.php',
+        async :false,
+        data: {
+            chemin: path,
+        },
+        success: function(data){
+            let chemin = path
+            if(!data){
+                chemin = "img/uploads/default.png";
+            }
+        }
+    });
 }

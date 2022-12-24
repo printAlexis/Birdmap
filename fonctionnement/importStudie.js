@@ -24,9 +24,8 @@ function initialize(study_id,callback) {
                                             locat.timestamp)
                 }
             }
-            console.log(animal.study_id);
             addStudiesControler(new StudyControler(animals,callback,animal.study_id));
-            
+            loadDesc(animal.individual_taxon_canonical_name)
         },
         error: (e) => {
             alert(e)

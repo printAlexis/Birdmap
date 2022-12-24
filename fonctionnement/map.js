@@ -1,18 +1,23 @@
-let studieAnimals = [];
 let StudiesControler = [];
 let loading = false;
 let mapMenu;
-
-
+let modifMenu;
 $(document).ready(() =>{
     mapMenu =  $(".search-menu");
     SearchBar.loadSearchBar();
     SearchBar.getSearchResult(" ");
     reloadStudies();
+
+    $('.reset').click(function(){
+        SearchBar.resetAll()
+        StudiesControler.forEach(element => {
+            element.removeElements();
+        });
+        StudiesControler = []
+    });
 })
 function reloadStudies(){
-    studiesElements = $(".study");
-    studiesElements.click( function () {
+    $(".study").click( function () {
         if(loading){
             return;
         }
@@ -31,6 +36,12 @@ function reloadStudies(){
 
         initialize($( this ).attr('value'),'route()');
     });
+    $(".modif").click(function(){
+        p = $("p[value='"+$(this).attr('value')+"']");
+        a = $("a[value='"+$(this).attr('value')+"']");
+        modifMenu = new ModifMenu($(this).attr('value'),p.text(),a.attr('title'))
+    })
+
 
 }
 function addStudiesControler(controler){
@@ -38,7 +49,22 @@ function addStudiesControler(controler){
     $('.chargement').hide();
     StudiesControler.push(controler);
 }
+
+function loadDesc(animal){
+    $.ajax({
+        type: 'GET',
+        url: 'db/AjaxRequests/getDescrition.php',
+        data: {
+            name: animal,
+        },
+        success: function(data){
+            console.log(animal);
+            $(".animalInfo").html(data)
+        }
+    });
+}
 function route(){
+
     let btn = $('.popup');
     StudyControler.getStudyFromId(StudiesControler,btn.attr('studyName')).route(btn.attr('value'));
 }

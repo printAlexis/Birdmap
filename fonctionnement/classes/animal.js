@@ -3,15 +3,23 @@ class Animal {
         this.relativeName = relativeName;
         this.animalName = animalName;
         this.locations = [];
+        console.log("'abrfdefezfeza")
+        this.#createNewAnimal();
     }
     addLocation(lat,long,timestamp){
         this.locations.push(new Location(lat,long,timestamp))
     }
     getLocation(i){
+        if(i == -1){
+            return this.locations[this.locations.length-1]
+        }
         return this.locations[i];
     }
     getLocationLength(){
         return this.locations.length;
+    }
+    hasLocation(){
+        return this.getLocationLength() != 0;
     }
     getRelativeName(){
         return this.relativeName;
@@ -26,5 +34,18 @@ class Animal {
             }
         }
         return null;
+    }
+    #createNewAnimal(){
+        console.log("test");
+        $.ajax({
+            type: 'POST',
+            url: 'db/AjaxRequests/createNewAnimal.php',
+            data: {
+                name: this.animalName,
+            },
+            success: function(){
+                console.log(data)
+            }
+        });
     }
 }
