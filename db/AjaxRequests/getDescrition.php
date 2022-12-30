@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <?php
 include_once "../animalDB.php";
 
@@ -11,13 +10,4 @@ if(isset($_GET['name'])){
         <p class='description--text'>".$result['Texte_']."</p>
     </div>");
 }
-=======
-<?php
-include_once "../animalDB.php";
-
-if(isset($_GET['name'])){
-    echo($_GET['name']);
-    var_dump(AnimalDB::getAnimalDescription($_GET['name']));
-}
->>>>>>> fbc9e54a077b3be9cf7024bd5bf830839fc50965
 ?>
