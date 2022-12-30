@@ -13,7 +13,10 @@
     <link rel="stylesheet" href="style/map.css">
     <link rel="stylesheet" href="style/searchbar.css">
     <link rel="stylesheet" href="style/modfiMenu.css">
+<<<<<<< HEAD
     <link rel="stylesheet" href="style/description.css">
+=======
+>>>>>>> fbc9e54a077b3be9cf7024bd5bf830839fc50965
     <script src="fonctionnement/classes/location.js"></script>
     <script src="fonctionnement/classes/animal.js"></script>
     <script src="fonctionnement/classes/AnimalControler.js"></script>

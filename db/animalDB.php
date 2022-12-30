@@ -113,22 +113,35 @@ class AnimalDB {
     if(self::isAnimal($name)){
       return false;
     }
+<<<<<<< HEAD
     $sql = "delete from description where Id_Description not in (select Id_Description from animal)";
     $requete3 = self::$connexion->prepare($sql);
     $requete3->execute();
     $sql = "INSERT into `description` (Texte_, valide, path) VALUES (? , ? , ?)";
+=======
+    $sql = "INSERT into `description` (Texte_, validé, path) VALUES (?, ?, ?)";
+>>>>>>> fbc9e54a077b3be9cf7024bd5bf830839fc50965
     $requete1 = self::$connexion->prepare($sql);
     $requete1->bindValue(1, "pas de description de l'animal pour l'instant",PDO::PARAM_STR);
     $requete1->bindValue(2, 1,PDO::PARAM_INT);
     $requete1->bindValue(3, "img/animals/default.jpg",PDO::PARAM_STR);
     $requete1->execute();
+<<<<<<< HEAD
+=======
+
+    uwait(100);
+>>>>>>> fbc9e54a077b3be9cf7024bd5bf830839fc50965
     $sql = "INSERT into `animal` (NomAnimal, Id_Description) VALUES (?, ?)";
     $requete2 = self::$connexion->prepare($sql);
     $requete2->bindValue(1, $name,PDO::PARAM_STR);
     $requete2->bindValue(2, self::$connexion->lastInsertId(),PDO::PARAM_INT);
     $requete2->execute();
+<<<<<<< HEAD
 
 
+=======
+    uwait(100);
+>>>>>>> fbc9e54a077b3be9cf7024bd5bf830839fc50965
     return true;
   }
   static function isAnimal($name){
@@ -147,8 +160,13 @@ class AnimalDB {
     }
     $sql = "SELECT Texte_, path FROM animal, description
             WHERE animal.Id_Description = description.Id_Description 
+<<<<<<< HEAD
             AND description.valide = 1
             AND NomAnimal = ? ";
+=======
+            AND desription.valide = 1
+            AND NomAnimal =?";
+>>>>>>> fbc9e54a077b3be9cf7024bd5bf830839fc50965
     $requete = self::$connexion->prepare($sql);
     $requete->bindValue(1, $name,PDO::PARAM_STR);
     $requete->execute();
