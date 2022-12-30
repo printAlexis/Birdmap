@@ -1,0 +1,16 @@
+.description{
+    width:100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.animalInfo{
+    width:100%;
+}
+
+.description--img{
+    height: auto;
+    width:  20vw;
+
+}

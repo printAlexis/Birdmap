@@ -11,11 +11,15 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js" integrity="sha256-lSjKY0/srUM9BE3dPm+c4fBo1dky2v27Gdjm2uoZaL0=" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="style/map.css">
+    <link rel="stylesheet" href="style/searchbar.css">
+    <link rel="stylesheet" href="style/modfiMenu.css">
+    <link rel="stylesheet" href="style/description.css">
     <script src="fonctionnement/classes/location.js"></script>
     <script src="fonctionnement/classes/animal.js"></script>
     <script src="fonctionnement/classes/AnimalControler.js"></script>
     <script src="fonctionnement/classes/StudyControler.js"></script>
     <script src="fonctionnement/importStudie.js"></script>
+
 	<style>
 
 	</style>
@@ -32,6 +36,7 @@
             <div class="map--container">
                 <img src="img/chargement.gif" width="50px" height="50px" class="chargement" alt="loading"/>
                 <div id="map" ></div>
+                <img class="reset" src="img/reset.png" alt="reset">
             </div>
         
             <div class="search-menu">
@@ -40,7 +45,9 @@
                 </div>
             </div>
     </div>
-        <div class="merde">fdp</div>
+    <div class="animalInfo">
+        
+    </div>
     </body>
     <script src="fonctionnement/map.js"></script>
     <script src="affichage/searchbar/searchbar.js"></script>

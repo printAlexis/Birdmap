@@ -1,52 +1,58 @@
 class ModifMenu{
-    constructor(StudyId){
+    constructor(StudyId,text,desc){
         this.id = StudyId;
+        this.LoadMenu();
+        this.#ReloadText(text,desc);
     }
-    static #addListener(){
-        console.log("testttrt");
-        $(".valider").click(function(){
-            console.log("salut mon pote")
+    #ReloadText(text,desc){
+        // $(".title").val(text);
+        // $(".desc").val(desc);
+    }
+    #addListener(){
+        $(".title").val();
+        $(".valider").click({this: this},function(event){
+            let text =  $(".title").val();
+            let desc = $(".desc").val();
+            event.data.this.ModifStudy(text,desc);
         })
         $(".annuler").click(function(){
-            SearchBar.loadSearchBar()
+            SearchBar.loadSearchBar();
             SearchBar.getSearchResult("");
         })
     }
-    ModifStudy(studyID,){
+    ModifStudy(StudyText,StudyDesc){
         $.ajax({
             type: 'POST',
-            url: 'db/AnimalBD.php',
+            url: 'db/AjaxRequests/ModifyStudy.php',
             data: {
-                id: "247850178"
+                id: this.id,
+                text: StudyText,
+                desc: StudyDesc
             },
             success: function(data){
-                $(".search-menu").html(data);
-                ModifMenu.#addListener();
+                SearchBar.loadSearchBar();
+                SearchBar.getSearchResult(" ");
+                conosole.log(data);
             }
-        })
+        });
     }
     LoadMenu(){
         $.ajax({
             type: 'GET',
             url: 'affichage/modifMenu/ModifMenuTemplate.php',
+            async : false,
             data: {
-                id: "247850178"
+                id: this.id
             },
             success: function(data){
                 $(".search-menu").html(data);
-                ModifMenu.#addListener();
+                
             }
         })
+        this.#addListener();
     }
 }
-$(document).ready(() =>{
-    $(".merde").click(function (){
-        let test = new ModifMenu(1);
-        test.LoadMenu();
-    })
-    $(".merde").html("fdo")
 
-})
 
 
 
