@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="style/description.css">
     <link rel="stylesheet" href="style/navbar.css">
     <link rel='stylesheet' href='style/erreur.css'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src='erreur/erreur.js'></script>
     <script src="fonctionnement/classes/location.js"></script>
     <script src="fonctionnement/classes/animal.js"></script>

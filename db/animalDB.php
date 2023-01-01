@@ -194,37 +194,39 @@ class AnimalDB {
     $requete->execute();
     return $nbmax;
   }
-//   static insertJson($json, $id){
-//     if(self::$connexion == null){
-//       self::loadDB();
-//     }
-    
-//     for($i = 0; $i < sizeof($json['individuals']); ++$i ){
-//       $indiv = $json['individuals'][$i];
-//       self::addAnimal($indiv["individual_taxon_canonical_name"]);
-//       self::insertAnimalSuivit($id,$indiv["individual_taxon_canonical_name"],$indiv["individual_local_identifier"]);
-//       for($y = 0; $y < sizeof( $json['individuals'][$i]['locations']); ++$y ){
-//         $location = $indiv['locations'][$y];
-//         self::insertAnimalLocation($location[]);
-//       }
-//     }
+  static function addFavorite($id,$user){
+    if(self::$connexion == null){
+      self::loadDB();
+    }
+    $sql = "select Id_Utilisateur_ from utilisateur_ where pseudo=?";
+    $requete = self::$connexion->prepare($sql);
+    $requete->bindValue(1, $user,PDO::PARAM_STR);
+    $requete->execute();
+    $idUser = $requete->fetch()[0];
 
-//   }
-// }
-// static insertAnimalSuivit($id,$nomEspece, $nomAnimal){
-//   if(self::$connexion == null){
-//     self::loadDB();
-//   }
-//   $sql = "select id_Animal from animal where NomAnimal=?";
-//   $requete = self::$connexion->prepare($sql);
-//   $requete->bindValue(1, $nomEspece,PDO::PARAM_STR);
-//   $requete->execute();
-//   $idAnimal = $requete->fetch();
-//   $sql = "insert into animalsuivit (Id_Etude_Externe_, Id_Animal, nom_animal) values (?,?,?)";
-//   $requete->bindValue(1, $id,PDO::PARAM_INT);
-//   $requete->bindValue(2, $idAnimal,PDO::PARAM_STR);
-//   $requete->bindValue(3, $nomAnimal,PDO::PARAM_STR);
-//   $requete->execute();
+    $sql = "insert into favori (Id_Utilisateur_,Id_Etude) VALUES (? , ?)";
+    $requete = self::$connexion->prepare($sql);
+    $requete->bindValue(1, $idUser,PDO::PARAM_INT);
+    $requete->bindValue(2, $id,PDO::PARAM_INT);
+    $requete->execute();
+  }
+  static function removeFavorite($id,$user){
  
+    if(self::$connexion == null){
+      self::loadDB();
+    }
+    $sql = "select Id_Utilisateur_ from utilisateur_ where pseudo=?";
+    $requete = self::$connexion->prepare($sql);
+    $requete->bindValue(1, $user,PDO::PARAM_STR);
+    $requete->execute();
+    $idUser = $requete->fetch()[0];
+    echo($idUser);
+    $sql = "DELETE FROM favori where Id_Utilisateur_=? and Id_Etude=?";
+    $requete = self::$connexion->prepare($sql);
+    $requete->bindValue(1, $idUser,PDO::PARAM_INT);
+    $requete->bindValue(2, $id,PDO::PARAM_INT);
+    $requete->execute();
+  }
 }
+
 ?>

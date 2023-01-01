@@ -19,6 +19,18 @@ $(document).ready(() =>{
     }); 
 })
 function reloadStudies(){
+    $(".fa-star").click(function (){
+        if($(this).hasClass("checked")){
+            $(this).removeClass('checked');
+            $(this).addClass('unchecked');
+            removeFavorite($(this).attr('value'));
+        }
+        else{
+            $(this).addClass('checked');
+            $(this).removeClass('unchecked');
+            addFavorite($(this).attr('value'));
+        }
+    });
     $(".study").click( function () {
         //si il y a un chargement on ne fait rien 
         if(loading){
@@ -69,6 +81,32 @@ function loadDesc(animal){
         }
     });
 }
+function addFavorite(id){
+
+    $.ajax({
+        type: 'POST',
+        url: 'db/AjaxRequests/addFavorite.php',
+        data: {
+            id: id,
+        },
+        success: function(data){
+
+        }
+    });
+}
+function removeFavorite(id){
+    
+    $.ajax({
+        type: 'POST',
+        url: 'db/AjaxRequests/removeFavorite.php',
+        data: {
+            id: id,
+        },
+        success: function(data){
+            console.log(data);
+        }
+    });
+}
 function route(){
 
     let btn = $('.popup');
@@ -76,11 +114,10 @@ function route(){
 }
 
 
-    const map = L.map('map').setView([48.84169080236788, 2.2686434551720724], 17);
+    const map = L.map('map').setView([48.84169080236788, 2.2686434551720724],2);
     
     const tiles = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
         maxZoom: 19,
     attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
     }).addTo(map);
     
-    map.setView([48.84169080236788, 2.2686434551720724], 17);

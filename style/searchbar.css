@@ -32,7 +32,11 @@
     text-align: center;
 
 }
-.study-container> span{
+.checked{
+    color:rgb(236, 253, 139);
+}
+
+.study-container> .bar{
     border-bottom: solid 3px rgb(27, 27, 27);
     width: 90%;
     display: table;
@@ -47,7 +51,10 @@
 .modif:hover{
     color:rgb(126, 106, 106);
 }
-.study-container *{
+.study-container p,
+.study-container button,
+.unchecked
+{
     color:rgb(179, 169, 169);
 }
 .study-container p {
