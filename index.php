@@ -13,19 +13,16 @@
     <link rel="stylesheet" href="style/map.css">
     <link rel="stylesheet" href="style/searchbar.css">
     <link rel="stylesheet" href="style/modfiMenu.css">
-<<<<<<< HEAD
     <link rel="stylesheet" href="style/description.css">
-=======
->>>>>>> fbc9e54a077b3be9cf7024bd5bf830839fc50965
+    <link rel="stylesheet" href="style/navbar.css">
+    <link rel='stylesheet' href='style/erreur.css'>
+    <script src='erreur/erreur.js'></script>
     <script src="fonctionnement/classes/location.js"></script>
     <script src="fonctionnement/classes/animal.js"></script>
     <script src="fonctionnement/classes/AnimalControler.js"></script>
     <script src="fonctionnement/classes/StudyControler.js"></script>
     <script src="fonctionnement/importStudie.js"></script>
 
-	<style>
-
-	</style>
 </head>
 <body>
     
@@ -35,6 +32,9 @@
 <html>
 <!-- search the text for !! to find the lines that need to be modified to display your map. -->
     <body>
+        <div class="navbar">
+            <?php include 'components/navbar.php' ?>
+        </div>
         <div class="map-interface">
             <div class="map--container">
                 <img src="img/chargement.gif" width="50px" height="50px" class="chargement" alt="loading"/>
@@ -51,8 +51,18 @@
     <div class="animalInfo">
         
     </div>
+    <?php
+        if(isset($_GET['ErrorType'])){
+            $parametres = array(
+                "message" => "Erreur dans le fichier json",
+              );
+              extract($parametres);
+              include 'erreur/erreurTemplate.php';
+        }
+    ?>
     </body>
     <script src="fonctionnement/map.js"></script>
     <script src="affichage/searchbar/searchbar.js"></script>
     <script src="affichage/modifMenu/ModifMenu.js"></script>
+    <script src="affichage/addMenu/addMenu.js"></script>
 </html>

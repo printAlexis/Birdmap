@@ -20,6 +20,8 @@ foreach ($etudes as $studie) {
             </a>
             <button class='modif'  value=".$studie['Id_Etude']." type='button'>Proposer une modification</button>
             <span></span>
-        </div>");
+        </div>
+        ");
     }
+
 ?>

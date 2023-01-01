@@ -7,6 +7,7 @@ if(isset($_GET['id'])){
     $desc = $info[0]['DescriptionEtude'];
 }
 ?>
+
 <form method="POST" action="db/uploadIMG.php" enctype="multipart/form-data" class="modifStudy">
         <div class="StudyName">
             <h4>Nom de l'étude</h4>

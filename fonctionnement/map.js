@@ -2,6 +2,7 @@ let StudiesControler = []; //liste d'objets decrivant etude
 let loading = false; //permet de savoir si une etude est en chargement 
 let mapMenu; //section de la searchbar dans le code
 let modifMenu; //object représentant le menu de modification d'une étude
+let add_Menu;
 $(document).ready(() =>{
     mapMenu =  $(".search-menu");
     SearchBar.loadSearchBar();
@@ -43,6 +44,9 @@ function reloadStudies(){
         a = $("a[value='"+$(this).attr('value')+"']");
         modifMenu = new ModifMenu($(this).attr('value'),p.text(),a.attr('title'))
     })
+    $(".button--ajouter").click(function(){
+        add_Menu = new addMenu();
+    });
 
 
 }

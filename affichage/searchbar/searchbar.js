@@ -66,6 +66,7 @@ class SearchBar{
         $(".searchbar").keyup(function (){
             SearchBar.getSearchResult($(this).val());
         });
+        
     }
 
 }

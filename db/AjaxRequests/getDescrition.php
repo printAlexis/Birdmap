@@ -10,4 +10,5 @@ if(isset($_GET['name'])){
         <p class='description--text'>".$result['Texte_']."</p>
     </div>");
 }
+
 ?>
