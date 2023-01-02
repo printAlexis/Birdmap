@@ -3,6 +3,7 @@ let loading = false; //permet de savoir si une etude est en chargement
 let mapMenu; //section de la searchbar dans le code
 let modifMenu; //object représentant le menu de modification d'une étude
 let add_Menu;
+let modifAnimalMenu;
 $(document).ready(() =>{
     mapMenu =  $(".search-menu");
     SearchBar.loadSearchBar();
@@ -78,6 +79,10 @@ function loadDesc(animal){
         success: function(data){
             console.log(animal);
             $(".animalInfo").html(data)
+            $(".modifierAnimal").click(function (){
+
+                modifAnimalMenu = new modifAnimal($(".description--title").text());
+            })
         }
     });
 }

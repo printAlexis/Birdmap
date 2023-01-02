@@ -36,6 +36,28 @@ class AnimalDB {
     $requete->execute();
     return $requete->fetchAll();
   }
+  static function getfavStudieByText($text,$max,$user){
+    if(self::$connexion == null){
+      self::loadDB();
+    }
+    $sql = "select Id_Utilisateur_ from utilisateur_ where pseudo=?";
+    $requete = self::$connexion->prepare($sql);
+    $requete->bindValue(1, $user,PDO::PARAM_STR);
+    $requete->execute();
+    $idUser = $requete->fetch()[0];
+
+    $sql = "SELECT * FROM etude 
+            WHERE (Id_Etude LIKE '%".$text."%' 
+            OR NomEtude LIKE '%".$text."%' 
+            OR DescriptionEtude LIKE '%".$text."%')
+            AND Id_Etude IN (SELECT Id_Etude FROM favori WHERE Id_Utilisateur_=?)
+            ORDER BY NomEtude LIMIT ?";
+    $requete = self::$connexion->prepare($sql);
+    $requete->bindValue(1, $idUser,PDO::PARAM_INT);
+    $requete->bindValue(2, $max,PDO::PARAM_INT);
+    $requete->execute();
+    return $requete->fetchAll();
+  }
   static function getStudieByID($id){
     if(self::$connexion == null){
       self::loadDB();
@@ -131,6 +153,20 @@ class AnimalDB {
 
     return true;
   }
+  static function changeDescription($name, $text,$path){
+    if(self::$connexion == null){
+      self::loadDB();
+    }
+    echo $name;
+    $sql = "UPDATE `description` set Texte_=?, path=? where id_Description =
+    (SELECT id_Description FROM animal where nomAnimal=?)";
+    $requete1 = self::$connexion->prepare($sql);
+    $requete1->bindValue(1, $text,PDO::PARAM_STR);
+    $requete1->bindValue(2, $path,PDO::PARAM_STR);
+    $requete1->bindValue(3, $name,PDO::PARAM_STR);
+    $requete1->execute();
+
+  }
   static function isAnimal($name){
     if(self::$connexion == null){
       self::loadDB();
@@ -220,7 +256,7 @@ class AnimalDB {
     $requete->bindValue(1, $user,PDO::PARAM_STR);
     $requete->execute();
     $idUser = $requete->fetch()[0];
-    echo($idUser);
+
     $sql = "DELETE FROM favori where Id_Utilisateur_=? and Id_Etude=?";
     $requete = self::$connexion->prepare($sql);
     $requete->bindValue(1, $idUser,PDO::PARAM_INT);
