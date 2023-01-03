@@ -5,6 +5,7 @@ class SearchBar{
 
     static removeStudy(study){
         study.removeClass("selected");
+        study.parent().removeClass("selected")
         for(let i = 0 ; i<this.studies.length; ++i){
             if(this.studies[i] == study.attr('value')){
                 this.studies.splice(i,1);
@@ -18,6 +19,8 @@ class SearchBar{
     }
     static addStudy(study){
         study.addClass("selected");
+        study.parent().addClass("selected")
+
         $('.chargement').show();
         this.studies.push(study.attr('value'));
     }

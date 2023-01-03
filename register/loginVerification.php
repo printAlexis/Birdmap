@@ -8,6 +8,7 @@ if (isset($_REQUEST['username'], $_REQUEST['password'])){
     if(AnimalDB::isConnexion($username,$password)){
         $_SESSION['connected'] = 'true';
         $_SESSION['username'] = $username;
+
         header('Location: ../index.php');
         
     }

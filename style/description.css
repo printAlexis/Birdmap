@@ -5,6 +5,10 @@
     align-items: center;
 }
 
+.description--title{
+    color: rgb(179, 169, 169);
+    margin-top: 20px;
+}
 .animalInfo{
     width:100%;
 }
@@ -13,4 +17,33 @@
     height: auto;
     width:  20vw;
 
+}
+.description--text{
+    color: white;
+}
+
+.modifierAnimal {
+    padding: 3px;
+    border-radius: 2px;
+    color: white;
+    background-color: #3B78FE;
+}
+
+.modifAnimal h4{
+    color: rgb(179, 169, 169);
+    padding-bottom: 5px;
+    line-height: 1;
+}
+.choix button{
+    padding: 3px;
+    color: white;
+    background-color: #3B78FE;
+    border-radius: 2px;
+}
+
+.desc{
+    width: 60%;
+    height: 300px;
+    margin-top: 20px;
+    margin-bottom: 20px;
 }

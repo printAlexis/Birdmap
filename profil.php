@@ -19,22 +19,19 @@
         <!-- Section Information personnelle -->
         <div class="section personal-info">
         <h2 class="section-title">Mon profil</h2>
-        <img src="http://placehold.it/100x100" alt="photo de profil">
+        <img src="img/animals/Phoebastria irrorata.jpeg" alt="photo de profil">
         <div>
-            <p>Pseudo: MonPseudo</p>
+            <h4>Pseudo: </h4>
+            <p>MonPseudo</p>
+            <h4>Mail</h4>
             <p>Adresse email: monadresse@email.com</p>
             <button class='disconnect'>Se déconnecter</button>
         </div>
         </div>
         <!-- Première section vide -->
-        <div class="section">
-        <h2 class="section-title">Titre de la section</h2>
-        <!-- Mettre ici le contenu de votre première section -->
-        </div>
-        <!-- Deuxième section vide -->
-        <div class="section">
-        <h2 class="section-title">Titre de la section</h2>
-        <!-- Mettre ici le contenu de votre deuxième section -->
+        <div class="mes--etudes">
+        <h2 class="section-title">Mes etudes</h2>
+        <div class="myStudies"></div>
         </div>
     </div>
 </body>

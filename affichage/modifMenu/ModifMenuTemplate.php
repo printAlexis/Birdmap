@@ -1,5 +1,6 @@
 <?php
 include_once '../../db/animalDB.php';
+
 if(isset($_GET['id'])){
     $id = (String) trim($_GET['id']);
     $info = animalDB::getStudieByID($id);
@@ -18,7 +19,7 @@ if(isset($_GET['id'])){
             <textarea name="textarea" class="desc"id="textarea-a"><?php echo($desc);?></textarea>
         </div>
         <div class="upload">
-            <h4>Stiker</h4>
+            <h4>Sticker</h4>
             <input type="file" name="uploadfile" accept="image/png"/>
         </div>
         <div class="choix">

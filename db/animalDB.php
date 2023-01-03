@@ -263,6 +263,48 @@ class AnimalDB {
     $requete->bindValue(2, $id,PDO::PARAM_INT);
     $requete->execute();
   }
+  static function getAllStudy(){
+    if(self::$connexion == null){
+      self::loadDB();
+    }
+  $sql = "SELECT * FROM `etude` ORDER BY `Id_Etude` ASC";
+  $requete = self::$connexion->prepare($sql);
+ 
+  $requete->execute();
+  return $requete->fetchall();
+}
+static function getUserStudy($username){
+  if(self::$connexion == null){
+    self::loadDB();
+  }
+  $sql = "SELECT * FROM `etude`
+        WHERE Id_Etude IN (SELECT Id_Etude from `etude_externe`where Id_Utilisateur_= ( SELECT Id_Utilisateur_ FROM utilisateur_ where pseudo=?))";
+  $requete = self::$connexion->prepare($sql);
+  $requete->bindValue(1, $username,PDO::PARAM_STR);
+  $requete->execute();
+  return $requete->fetchall();
 }
 
+static function getUsers($adminUser){
+  if(self::$connexion == null){
+    self::loadDB();
+  }
+  $sql = "SELECT * FROM `utilisateur_` where pseudo <> $adminUser";
+  $requete = self::$connexion->prepare($sql);
+  $requete->bindValue(1, $adminUser,PDO::PARAM_STR);
+  $requete->execute();
+  return $requete->fetchall();
+}
+static function isAdmin($username){
+  if(self::$connexion == null){
+    self::loadDB();
+  }
+
+  $sql = "SELECT * FROM `utilisateur_` where pseudo =? and estAdministrateur=1";
+  $requete = self::$connexion->prepare($sql);
+  $requete->bindValue(1, $username,PDO::PARAM_STR);
+  $requete->execute();
+  return $requete->rowCount() > 0;
+}
+}
 ?>

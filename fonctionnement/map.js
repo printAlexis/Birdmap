@@ -53,11 +53,13 @@ function reloadStudies(){
         initialize($( this ).attr('value'),'route()');
     });
     $(".modif").click(function(){
+        connectUser();
         p = $("p[value='"+$(this).attr('value')+"']");
         a = $("a[value='"+$(this).attr('value')+"']");
         modifMenu = new ModifMenu($(this).attr('value'),p.text(),a.attr('title'))
     })
     $(".button--ajouter").click(function(){
+        connectUser();
         add_Menu = new addMenu();
     });
 
@@ -80,7 +82,7 @@ function loadDesc(animal){
             console.log(animal);
             $(".animalInfo").html(data)
             $(".modifierAnimal").click(function (){
-
+                connectUser();
                 modifAnimalMenu = new modifAnimal($(".description--title").text());
             })
         }
@@ -117,7 +119,18 @@ function route(){
     let btn = $('.popup');
     StudyControler.getStudyFromId(StudiesControler,btn.attr('studyName')).route(btn.attr('value'));
 }
-
+function connectUser(){
+    $.ajax({
+        type: 'POST',
+        url: 'db/AjaxRequests/playerConnected.php',
+        async: false,
+        success: function(data){
+            if(data == 'false'){
+                window.location = "register/login.php"
+            }
+        }
+    });
+}
 
     const map = L.map('map').setView([48.84169080236788, 2.2686434551720724],2);
     
@@ -125,4 +138,3 @@ function route(){
         maxZoom: 19,
     attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
     }).addTo(map);
-    

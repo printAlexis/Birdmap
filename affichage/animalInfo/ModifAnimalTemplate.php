@@ -8,9 +8,7 @@ if(isset($_GET['name'])){
 ?>
 
 <form method="POST" action="db/modifAnimalInfo.php" enctype="multipart/form-data" class="modifAnimal">
-        <div class="Animal--name">
-            <h4><?php echo($name);?></h4>
-        </div>
+
         <div class="Animal--description">
             <h4>Description</h4>
             <textarea name="textarea" class="desc"id="textarea-a" required><?php echo($texte);?></textarea>
