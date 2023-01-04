@@ -37,6 +37,7 @@ if (isset($_POST['valider']) && strlen($_FILES['uploadfile']['name'])!= 0) {
             }
         }
         if($valide){
+            
             $path = realpath("../study/json/")."/";
             $path = $path. AnimalDB::createStudy($_POST['nom'],$_POST['textarea'],$_SESSION['username'],$path). ".json";
             if(move_uploaded_file($_FILES['uploadfile']['tmp_name'], $path)){

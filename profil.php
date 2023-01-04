@@ -19,13 +19,20 @@
         <!-- Section Information personnelle -->
         <div class="section personal-info">
         <h2 class="section-title">Mon profil</h2>
-        <img src="img/animals/Phoebastria irrorata.jpeg" alt="photo de profil">
+        <img src="<?php
+        $path = "img/uploads/user/".AnimalDB::getUserID($_SESSION['username']).".jpg";
+        $src = file_exists($path) ? $path : "img/animals/default.jpg";
+        echo $src;
+         ?>" 
+         alt="photo de profil">
         <div>
             <h4>Pseudo: </h4>
-            <p>MonPseudo</p>
+            <p><?php echo $_SESSION['username'];?></p>
             <h4>Mail</h4>
-            <p>Adresse email: monadresse@email.com</p>
+            <p><?php echo animalDB::getMail($_SESSION['username']);?></p>
+            <button class='change--profil'>Modifier le profil</button>
             <button class='disconnect'>Se déconnecter</button>
+
         </div>
         </div>
         <!-- Première section vide -->

@@ -1,7 +1,7 @@
 .personal-info{
  background: #141114;
  height: 100vh;
- width: 30%;
+ width: 40%;
  display: flex;
  flex-direction: column;
  text-align: center;
@@ -21,7 +21,7 @@
     margin: 0;
     color: #3B78FE;
 }
-.disconnect{
+.disconnect,.change--profil{
     padding: 3px;
     color: white;
     background-color: #3B78FE;
@@ -34,15 +34,31 @@
     height: 100vh;
     overflow-y: scroll;
     background-color: rgb(43, 46, 49);
+
 }
 
-
+.study-container{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.study-container h2,
+.study-container p{
+    width: 100%;
+    text-align: center;
+}
 .section-title{
     text-align: center;
     background-color: rgb(27, 27, 27);
     margin: 0;
 }
+.mes--etudes{
+    width: 60%;
+    height: 100vh;
 
+}
 .delete--study{
     padding: 3px;
     color: white;

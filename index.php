@@ -60,6 +60,7 @@
               );
               extract($parametres);
               include 'erreur/erreurTemplate.php';
+              unset($_GET['ErrorType']);
         }
     ?>
     </body>

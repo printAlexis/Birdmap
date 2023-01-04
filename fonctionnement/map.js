@@ -62,7 +62,15 @@ function reloadStudies(){
         connectUser();
         add_Menu = new addMenu();
     });
+    $(".suppress").click(function (){
 
+        SearchBar.deleteStudy($(this).attr('value'));
+        let study = StudyControler.getStudyFromId(StudiesControler,$(this).attr('value'));
+        if(study !== undefined){
+            StudyControler.RemoveElementFromID(StudiesControler,$(this).attr('value'));
+            study.removeElements();
+        }
+    });
 
 }
 function addStudiesControler(controler){

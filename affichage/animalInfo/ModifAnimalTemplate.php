@@ -11,11 +11,11 @@ if(isset($_GET['name'])){
 
         <div class="Animal--description">
             <h4>Description</h4>
-            <textarea name="textarea" class="desc"id="textarea-a" required><?php echo($texte);?></textarea>
+            <textarea name="textarea" class="desc"id="textarea-a" ><?php echo($texte);?></textarea>
         </div>
         <div class="upload">
             <h4>Image</h4>
-            <input type="file" name="uploadfile" accept="image/" required/>
+            <input type="file" name="uploadfile" accept="image/jpg" required/>
         </div>
         <div class="choix">
             <button class="valider--animal" type="submit" name="valider">Valider</button>

@@ -5,12 +5,17 @@ if (isset($_REQUEST['username'], $_REQUEST['password'])){
   $password = $_REQUEST['password'];
   session_start();
   // Exécuter la requête sur la base de données
+    
     if(AnimalDB::isConnexion($username,$password)){
+      if(AnimalDB::isBanned($username)){
+        $_SESSION['post_data'] = "banned";
+        header('Location: login.php');
+      }
+      else{
         $_SESSION['connected'] = 'true';
         $_SESSION['username'] = $username;
-
         header('Location: ../index.php');
-        
+      }
     }
     else{
       

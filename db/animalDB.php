@@ -306,5 +306,119 @@ static function isAdmin($username){
   $requete->execute();
   return $requete->rowCount() > 0;
 }
+static function isBanned($username){
+  if(self::$connexion == null){
+    self::loadDB();
+  }
+
+  $sql = "SELECT * FROM `utilisateur_` where pseudo =? and EstBanni=1";
+  $requete = self::$connexion->prepare($sql);
+  $requete->bindValue(1, $username,PDO::PARAM_STR);
+  $requete->execute();
+  return $requete->rowCount() > 0;
+}
+static function deleteExternalStudy($id){
+  if(self::$connexion == null){
+    self::loadDB();
+  }
+  
+  $sql = "DELETE FROM etude_externe where Id_Etude=?";
+  $requete = self::$connexion->prepare($sql);
+  $requete->bindValue(1, $id,PDO::PARAM_INT);
+  $requete->execute();
+
+  $sql = "DELETE FROM etude where Id_Etude=?";
+  $requete = self::$connexion->prepare($sql);
+  $requete->bindValue(1, $id,PDO::PARAM_INT);
+  $requete->execute();
+}
+
+static function deleteInternalStudy($id){
+  if(self::$connexion == null){
+    self::loadDB();
+  }
+  
+  $sql = "DELETE FROM Id_Etude where Id_Etude=?";
+  $requete = self::$connexion->prepare($sql);
+  $requete->bindValue(1, $id,PDO::PARAM_INT);
+  $requete->execute();
+
+  $sql = "DELETE FROM etude where Id_Etude=?";
+  $requete = self::$connexion->prepare($sql);
+  $requete->bindValue(1, $id,PDO::PARAM_INT);
+  $requete->execute();
+}
+static function getMail($user){
+  if(self::$connexion == null){
+    self::loadDB();
+  }
+  
+  $sql = "select Email from utilisateur_ where pseudo=?";
+  $requete = self::$connexion->prepare($sql);
+  $requete->bindValue(1, $user,PDO::PARAM_STR);
+  $requete->execute();
+  return $requete->fetch()[0];
+  
+}
+static function deleteStudy($id){
+  if(self::$connexion == null){
+    self::loadDB();
+  }
+  self::deleteExternalStudy($id);
+  self::deleteInternalStudy($id);
+}
+static function getUsersByName($name){
+  if(self::$connexion == null){
+    self::loadDB();
+  }
+  $sql = "SELECT * FROM etude WHERE Id_Etude LIKE '%".$text."%' OR NomEtude LIKE '%".$text."%' OR DescriptionEtude LIKE '%".$text."%' ORDER BY NomEtude LIMIT ?";
+
+  $requete = self::$connexion->prepare($sql);
+  $requete->bindValue(1, $max,PDO::PARAM_INT);
+  $requete->execute();
+  return $requete->fetchAll();
+}
+
+static function modifierName($oldName, $newName){
+  if(self::$connexion == null){
+    self::loadDB();
+  }
+  $sql = "update utilisateur_ SET pseudo =? WHERE pseudo =?";
+  $requete = self::$connexion->prepare($sql);
+  $requete->bindValue(1, $newName,PDO::PARAM_STR);
+  $requete->bindValue(2, $oldName,PDO::PARAM_STR);
+  $requete->execute();
+
+}
+
+static function modifierMail($oldName, $newMail){
+  if(self::$connexion == null){
+    self::loadDB();
+  }
+  $sql = "update utilisateur_ SET Email=? WHERE pseudo =?";
+  $requete = self::$connexion->prepare($sql);
+
+  $requete->bindValue(1, $newMail,PDO::PARAM_STR);
+  $requete->bindValue(2, $oldName,PDO::PARAM_STR);
+  $requete->execute();
+}
+static function modifierMDP($oldName, $mdp){
+  if(self::$connexion == null){
+    self::loadDB();
+  }
+  $password = hash('sha256', stripslashes($mdp));
+  $sql = "update utilisateur_ SET motDePasse=? WHERE pseudo =?";
+  $requete = self::$connexion->prepare($sql);
+  $requete->bindValue(1, $password,PDO::PARAM_STR);
+  $requete->bindValue(2, $oldName,PDO::PARAM_STR);
+  $requete->execute();
+}
+static function getUserID($user){
+  $sql = "select Id_Utilisateur_ from utilisateur_ where pseudo=?";
+  $requete = self::$connexion->prepare($sql);
+  $requete->bindValue(1, $user,PDO::PARAM_STR);
+  $requete->execute();
+  return $requete->fetch()[0];
+}
 }
 ?>

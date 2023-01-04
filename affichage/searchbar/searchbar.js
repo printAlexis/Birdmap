@@ -13,6 +13,20 @@ class SearchBar{
         }
 
     }
+    static deleteStudy(id){
+        $.ajax({
+            type: 'POST',
+            url: 'db/AjaxRequests/deleteStudy.php',
+            data: {
+                id: id
+            },
+            success: function(data){
+                console.log(data);
+                SearchBar.resetAll();
+            }
+        });
+        
+    }
     static resetAll(){
         this.studies = [];
         this.getSearchResult("");

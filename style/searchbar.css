@@ -46,11 +46,8 @@
     padding-top: 3px;
     padding-bottom: 3px;
 }
-.modif{
-    padding: 4px;
 
-}
-.modif:hover{
+.modif:hover, .suppress:hover{
     color:rgb(126, 106, 106);
 }
 .study-container p,
@@ -69,9 +66,10 @@
     border-color:#1c54ce;
 
 }
-.modif{
+.modif, .suppress{
     background-color: inherit;
     border-radius: inherit;
+    padding: 4px;
 } 
 
 .indisponible{

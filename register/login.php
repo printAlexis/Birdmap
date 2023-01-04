@@ -18,9 +18,16 @@
 <?php
     session_start();
     if(isset($_SESSION['post_data'])){
-      $parametres = array(
+      if($_SESSION['post_data'] == "wrong"){
+        $parametres = array(
         "message" => "login ou mot de passe non valide",
       );
+    }
+      if($_SESSION['post_data'] == "banned"){
+        $parametres = array(
+        "message" => "vous etes bannis",
+      );
+    }
       extract($parametres);
       include '../erreur/erreurTemplate.php';
       unset($_SESSION['post_data']);
