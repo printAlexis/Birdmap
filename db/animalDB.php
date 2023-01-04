@@ -371,10 +371,9 @@ static function getUsersByName($name){
   if(self::$connexion == null){
     self::loadDB();
   }
-  $sql = "SELECT * FROM etude WHERE Id_Etude LIKE '%".$text."%' OR NomEtude LIKE '%".$text."%' OR DescriptionEtude LIKE '%".$text."%' ORDER BY NomEtude LIMIT ?";
+  $sql = "SELECT Id_Utilisateur_,	pseudo, Email,EstBanni FROM utilisateur_ WHERE pseudo LIKE '%".$name."%' AND estAdministrateur=0";
 
   $requete = self::$connexion->prepare($sql);
-  $requete->bindValue(1, $max,PDO::PARAM_INT);
   $requete->execute();
   return $requete->fetchAll();
 }
@@ -383,17 +382,24 @@ static function modifierName($oldName, $newName){
   if(self::$connexion == null){
     self::loadDB();
   }
+  if(self::nameExists($newName)){
+    return false;
+  }
   $sql = "update utilisateur_ SET pseudo =? WHERE pseudo =?";
   $requete = self::$connexion->prepare($sql);
   $requete->bindValue(1, $newName,PDO::PARAM_STR);
   $requete->bindValue(2, $oldName,PDO::PARAM_STR);
   $requete->execute();
+  return true;
 
 }
 
 static function modifierMail($oldName, $newMail){
   if(self::$connexion == null){
     self::loadDB();
+  }
+  if(self::MailExists($newMail)){
+    return;
   }
   $sql = "update utilisateur_ SET Email=? WHERE pseudo =?";
   $requete = self::$connexion->prepare($sql);
@@ -414,11 +420,56 @@ static function modifierMDP($oldName, $mdp){
   $requete->execute();
 }
 static function getUserID($user){
+  if(self::$connexion == null){
+    self::loadDB();
+  }
   $sql = "select Id_Utilisateur_ from utilisateur_ where pseudo=?";
   $requete = self::$connexion->prepare($sql);
   $requete->bindValue(1, $user,PDO::PARAM_STR);
   $requete->execute();
   return $requete->fetch()[0];
+}
+static function changeBan($user){
+  if(self::$connexion == null){
+    self::loadDB();
+  }
+  $sql = "select EstBanni from utilisateur_ where pseudo=?";
+  $requete = self::$connexion->prepare($sql);
+  $requete->bindValue(1, $user,PDO::PARAM_STR);
+  $requete->execute();
+  $param = 0;
+  echo 'test';
+  if( $requete->fetch()[0] == '0'){
+    $param = 1;
+  }
+  $sql = "update utilisateur_ SET EstBanni =? WHERE pseudo =?";
+  $requete = self::$connexion->prepare($sql);
+  $requete->bindValue(1,$param,PDO::PARAM_INT);
+  $requete->bindValue(2, $user,PDO::PARAM_STR);
+  $requete->execute();
+
+}
+static function nameExists( $pseudo=""){
+  if(self::$connexion == null){
+    self::loadDB();
+  }
+  $username = stripslashes($pseudo);
+  $sql = "SELECT * FROM `utilisateur_` WHERE pseudo=?";
+  $requete = self::$connexion->prepare($sql);
+  $requete->bindValue(1, $username,PDO::PARAM_STR);
+  $requete->execute();
+  return $requete->rowCount() > 0;
+}
+static function MailExists( $email=""){
+  if(self::$connexion == null){
+    self::loadDB();
+  }
+  $username = stripslashes($email);
+  $sql = "SELECT * FROM `utilisateur_` WHERE Email=?";
+  $requete = self::$connexion->prepare($sql);
+  $requete->bindValue(1, $email,PDO::PARAM_STR);
+  $requete->execute();
+  return $requete->rowCount() > 0;
 }
 }
 ?>
