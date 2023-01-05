@@ -1,0 +1,97 @@
+html,body{
+  height: 100%;
+
+}
+body {
+    background: #141114;
+    font-family: Arial, Helvetica, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .box {
+    padding: 30px 25px 10px 25px;
+
+    width: 35%;
+    height: fit-content;
+    background: #0F0D0F;
+    border-radius: 20px;
+  }
+
+  h1.box-logo a {
+    text-decoration:none;
+  }
+  h1.box-title {
+    padding-bottom: 8px;
+    text-align: center;
+    color: #3B78FE;
+    font-size: 1.2em;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .box-button {
+    width: 100%;
+    display: inline-block;
+    outline: 0;
+    cursor: pointer;
+    border: none;
+    padding: 0 56px;
+    height: 45px;
+    line-height: 45px;
+    border-radius: 7px;
+    background-color: #3B78FE;
+    color: white;
+    font-weight: 400;
+    font-size: 16px;
+    box-shadow: 0 4px 14px 0 rgb(0 118 255 / 39%);
+    transition: background 0.2s ease,color 0.2s ease,box-shadow 0.2s ease;
+  }
+  .box-register
+  {
+    color: #3B78FE;
+    text-align:center;
+    margin-bottom:0px;
+  }
+  .box-register a
+  {
+    color: #3B78FE;
+    font-size:12px;
+  }
+  .box-input {
+    width: 100%;
+    border: 2px solid #aaa;
+    border-radius: 4px;
+    margin: 8px 0;
+    outline: none;
+    padding: 8px;
+    box-sizing: border-box;
+    transition: .3s;
+    background-color: #0F0D0F;
+    color: white;
+  }
+  .box-input:focus{
+    border-color:#3B78FE;
+    box-shadow:0 0 8px 0 #3B78FE;
+  }
+
+  .sucess{
+    text-align: center;
+    color: white;
+  }
+  .sucess a {
+    text-decoration: none;
+    color: #58aef7;
+  }
+  p.errorMessage {
+      background-color: #e66262;
+      border: #AA4502 1px solid;
+      padding: 5px 10px;
+      color: #FFFFFF;
+      border-radius: 3px;
+}
+
+@media  (min-width: 3OOpx) {
+  body {
+    background-color: lightblue;
+  }
+}
