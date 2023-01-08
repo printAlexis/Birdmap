@@ -3,9 +3,24 @@
   padding: 0;
   border: 0;
 }
+.navbar{
+  width: 100%;
+  padding-bottom: 50px;
+}
 html, body {
   height: 100%;
+  width: 100%;
   margin: 0;
+  background: #141114;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+.body{
+  display: flex;
+  align-items: center;
+  text-align: center;
 }
 .leaflet-container {
   width: 100%;
@@ -31,38 +46,71 @@ html, body {
   transform: translate(-50%, -50%);
   display: none;
 }
+.reset{
 
+  position: absolute;
+  z-index: 10000;
+  top:5%;
+  left: 90%;
+  height:40px;
+  width: 40px;
+  transition: all .2s ease-in-out;
+
+
+}
+.reset:hover{
+  transform: scale(1.5);
+}
 .map-interface{
   display: flex;
+
+  width: 91%;
+  border-radius: 10px;
+}
+
+.map-interface *{
+
+  border-radius: 5px;
+}
+
+.button--ajouter{
   width: 100%;
+  height: 6vh;
+  border-radius: 0;
+  background-color: #3B78FE;
+  color: wheat;
 }
-
-.scroll-menu {
-  width: 100%;
-  height: 90%;
-
-  overflow-y:scroll; 
-  position:relative;
-}
-
-.searchbar{
-  height: 10%;
-  width: 100%;
-}
-.scroll-menu a {
-  color: black;
-  display: block;
-  padding: 12px;
-  text-decoration: none;
-}
-
 
 .selected{
-
-  background-color: rgb(209, 178, 121);
+  background-color: #1c54ce;
 }
 
-.search-menu{
-  width: 45%;
-  height: 30vw;
+@media (max-width: 800px) {
+ 
+  .map-interface{
+    flex-direction: column;
+    height: 70vh;
+  }
+  div.map--container{
+    width: 100%;
+    height: 40%;
+  }
+  div.leaflet-container{
+    height: 100%;
+  }
+  div.search-menu{
+    height: 60%;
+  }
+  .button--ajouter{
+
+    height: 4vh;
+
+  }
+  .reset{
+    height: 30px;
+    width: 30px;
+
+  
+  
+  }
 }

@@ -8,10 +8,16 @@ class Animal {
         this.locations.push(new Location(lat,long,timestamp))
     }
     getLocation(i){
+        if(i == -1){
+            return this.locations[this.locations.length-1]
+        }
         return this.locations[i];
     }
     getLocationLength(){
         return this.locations.length;
+    }
+    hasLocation(){
+        return this.getLocationLength() != 0;
     }
     getRelativeName(){
         return this.relativeName;
@@ -27,4 +33,5 @@ class Animal {
         }
         return null;
     }
+
 }
